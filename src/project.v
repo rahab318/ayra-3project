@@ -31,42 +31,46 @@ module tt_um_ayra (
       ball <= 3;
       dir <= 1;
       counter <= 0;
-      speed <= 50;
+      speed <= 10;
     end
     else begin 
       counter <= counter + 1;
       if (counter >= speed) begin
         counter <= 0;
+        //move ball
         if (dir) 
           ball <= ball + 1;
         else
           ball <= ball - 1;
+          //left wall
         if (ball == 0) begin 
-          if (ui_in[0])
+          if (ui_in[0]) begin
             dir <= 1;
-            if (speed > 50)
-              speed <= speed - 500000;
-        end  
-        else begin 
-          ball <= 3;
-          speed <= 50;
+            if (speed > 5)
+              speed <= speed - 1;
+          end  
+          else begin 
+            ball <= 3;
+            speed <= 10;
+          end
         end
-      end
-      //right wall
-      if (ball == 7) begin 
-        if (ui_in[1]) begin
-          dir <= 0;
-          if (speed > 500000)
-            speed <= speed - 500000;
-        end
-        else begin
-          ball <= 3;
-          speed <= 50;
+       
+        //right wall
+        if (ball == 7) begin 
+          if (ui_in[1]) begin
+            dir <= 0;
+            if (speed > 5)
+              speed <= speed - 1;
+          end
+          else begin
+            ball <= 3;
+            speed <= 10;
+          end
         end
       end
     end 
   end
- 
+  
  assign uo_out = 8'b00000001 << ball;
 
   wire _unused = &{ena, uio_in};
