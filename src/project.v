@@ -44,7 +44,7 @@ module tt_um_ayra (
         if (ball == 0) begin 
           if (ui_in[0])
             dir <= 1;
-            if (speed > 500000)
+            if (speed > 5000000)
               speed <= speed - 500000;
         end  
         else begin 
