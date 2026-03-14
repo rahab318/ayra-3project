@@ -30,7 +30,7 @@ async def test_project(dut):
     #Left player
     dut.ui_in.value = 1
     await ClockCycles(dut.clk, 20)
-    dut.ui_in.value = 1
+    dut.ui_in.value = 0
 
     #Right player
     dut.ui_in.value = 2
