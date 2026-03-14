@@ -54,7 +54,7 @@ module tt_um_ayra (
     end 
   end
  assign uo_out = 8'b00000001 << ball;
-  // List all unused inputs to prevent warnings
+
   wire _unused = &{ena, uio_in};
 
 endmodule
