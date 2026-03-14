@@ -38,12 +38,14 @@ module tt_um_ayra (
       if (counter >= speed) begin
         counter <= 0;
         //move ball
-        if (dir) 
-          if(ball < 7)
+        if (dir) begin
+          if(ball < 7) 
             ball <= ball + 1;
-        else
+        end
+        else begin
           if(ball > 0)
             ball <= ball - 1;
+        end
         //left wall
         if (!dir && ball == 0) begin 
           if (ui_in[0]) begin
