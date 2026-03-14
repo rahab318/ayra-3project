@@ -27,8 +27,8 @@ async def test_project(dut):
 
     # Set the input values you want to test
     
-    #dut.ui_in.value = 0
-    #dut.uio_in.value = 0
+    dut.ui_in.value = 0
+    dut.uio_in.value = 0
 
     # Wait for one clock cycle to see the output values
     for i in range(50):
