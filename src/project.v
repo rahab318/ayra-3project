@@ -43,7 +43,7 @@ module tt_um_ayra (
         else
           ball <= ball - 1;
           //left wall
-        if (ball == 0) begin 
+        if (!dir && ball == 0) begin 
           if (ui_in[0]) begin
             dir <= 1;
             if (speed > 5)
@@ -56,7 +56,7 @@ module tt_um_ayra (
         end
        
         //right wall
-        if (ball == 7) begin 
+        if (dir && ball == 7) begin 
           if (ui_in[1]) begin
             dir <= 0;
             if (speed > 5)
