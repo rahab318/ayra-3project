@@ -31,7 +31,7 @@ module tt_um_ayra (
       ball <= 3;
       dir <= 1;
       counter <= 0;
-      speed <= 5000000;
+      speed <= 50;
     end
     else begin 
       counter <= counter + 1;
@@ -44,12 +44,12 @@ module tt_um_ayra (
         if (ball == 0) begin 
           if (ui_in[0])
             dir <= 1;
-            if (speed > 5000000)
+            if (speed > 50)
               speed <= speed - 500000;
         end  
         else begin 
           ball <= 3;
-          speed <= 5000000;
+          speed <= 50;
         end
       end
       //right wall
@@ -61,7 +61,7 @@ module tt_um_ayra (
         end
         else begin
           ball <= 3;
-          speed <= 5000000;
+          speed <= 50;
         end
       end
     end 

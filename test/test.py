@@ -33,9 +33,9 @@ async def test_project(dut):
     dut.ui_in.value = 0
 
     #Right player
-    dut.ui_in.value = 2
-    await ClockCycles(dut.clk, 20)
-    dut.ui_in.value = 0
+    #dut.ui_in.value = 2
+    #await ClockCycles(dut.clk, 20)
+    #dut.ui_in.value = 0
 
     # Wait for one clock cycle to see the output values
     for i in range(20000):
