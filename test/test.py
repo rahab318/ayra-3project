@@ -26,9 +26,16 @@ async def test_project(dut):
     dut._log.info("Test project behavior")
 
     # Set the input values you want to test
-    
+    # For example, to set ui_in to 1 and uio_in to 0:
+    #Left player
     dut.ui_in.value = 1
-    dut.uio_in.value = 0
+    await ClockCycles(dut.clk, 20)
+    dut.ui_in.value = 0
+
+    #Right player
+    #dut.ui_in.value = 2
+    #await ClockCycles(dut.clk, 20)
+    #dut.ui_in.value = 0
 
     # Wait for one clock cycle to see the output values
     for i in range(100):
