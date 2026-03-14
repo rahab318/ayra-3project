@@ -27,20 +27,23 @@ async def test_project(dut):
 
     # Set the input values you want to test
     # For example, to set ui_in to 1 and uio_in to 0:
-    #Left player
-    #Right player
-    dut.ui_in.value = 2
-    await ClockCycles(dut.clk, 30)
-    dut.ui_in.value = 0
-    
-    dut.ui_in.value = 1
-    await ClockCycles(dut.clk, 30)
-    dut.ui_in.value = 0
 
-    
+    for i in range(10):
+        #left player
+        dut.ui_in.value = 2
+        await ClockCycles(dut.clk, 20)
+        dut.ui_in.value = 0
+
+        await ClockCycles(dut.clk, 100)
+        #right player
+        dut.ui_in.value = 1
+        await ClockCycles(dut.clk, 20)
+        dut.ui_in.value = 0
+        
+        await ClockCycles(dut.clk, 100)
 
     # Wait for one clock cycle to see the output values
-    for i in range(20000):
+    for i in range(2000):
         await ClockCycles(dut.clk, 1)
 
     # The following assersion is just an example of how to check the output values.
