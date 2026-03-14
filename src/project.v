@@ -39,10 +39,12 @@ module tt_um_ayra (
         counter <= 0;
         //move ball
         if (dir) 
-          ball <= ball + 1;
+          if(ball < 7)
+            ball <= ball + 1;
         else
-          ball <= ball - 1;
-          //left wall
+          if(ball > 0)
+            ball <= ball - 1;
+        //left wall
         if (!dir && ball == 0) begin 
           if (ui_in[0]) begin
             dir <= 1;
