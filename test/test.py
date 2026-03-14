@@ -38,7 +38,7 @@ async def test_project(dut):
     dut.ui_in.value = 0
 
     # Wait for one clock cycle to see the output values
-    for i in range(100):
+    for i in range(20000):
         await ClockCycles(dut.clk, 1)
 
     # The following assersion is just an example of how to check the output values.
