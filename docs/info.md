@@ -9,11 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+A sigle LED represents the ball and moves across the LED row from left to rigth and back
+Two player control the game using buttons:
+Player 1 presses a button when the ball reaches the left side
+Player 2 presses a button when the ball reaches the right side
 
 ## How to test
 
-Explain how to use your project
+
 
 ## External hardware
 
