@@ -21,19 +21,22 @@ module tt_um_ayra (
   assign uio_out = 8'b0;
   assign uio_oe  = 8'b0;
 
-  reg [2:0] ball = 3;
-  reg dir = 1;
-  reg [23:0] counter = 0;
+  reg [2:0] ball;
+  reg dir;
+  reg [23:0] counter;
+  reg [23:0] speed;
 
   always @(posedge clk) begin 
     if (!rst_n) begin 
       ball <= 3;
       dir <= 1;
       counter <= 0;
+      speed <= 5000000;
     end
     else begin 
       counter <= counter + 1;
-      if (counter == 0) begin
+      if (counter >= speed) begin
+        counter <= 0;
         if (dir) 
           ball <= ball + 1;
         else
@@ -41,18 +44,29 @@ module tt_um_ayra (
         if (ball == 0) begin 
           if (ui_in[0])
             dir <= 1;
-          else 
-            ball <= 3;
+            if (speed > 500000)
+              speed <= speed - 500000;
         end  
-        if (ball == 7) begin 
-          if (ui_in[1])
-            dir <= 0;
-          else 
-             ball <= 3;
+        else begin 
+          ball <= 3;
+          speed <= 5000000;
         end
-      end 
+      end
+      //right wall
+      if (ball == 7) begin 
+        if (ui_in[1]) begin
+          dir <= 0;
+          if (speed > 500000)
+            speed <= speed - 500000;
+        end
+        else begin
+          ball <= 3;
+          speed <= 5000000;
+        end
+      end
     end 
   end
+ 
  assign uo_out = 8'b00000001 << ball;
 
   wire _unused = &{ena, uio_in};
